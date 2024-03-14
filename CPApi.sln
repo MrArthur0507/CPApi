@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPApi", "CPApi\CPApi.csproj", "{0DA896A9-2F29-4AD8-AD54-AA8145CADD31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DA896A9-2F29-4AD8-AD54-AA8145CADD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA896A9-2F29-4AD8-AD54-AA8145CADD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA896A9-2F29-4AD8-AD54-AA8145CADD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA896A9-2F29-4AD8-AD54-AA8145CADD31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68C5E786-75BE-46BE-8D1F-5908602DC5A9}
+	EndGlobalSection
+EndGlobal
