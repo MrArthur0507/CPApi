@@ -1,4 +1,5 @@
 ﻿using CPApi.Service;
+using CPApi.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CPApi.Controllers
@@ -12,10 +13,14 @@ namespace CPApi.Controllers
         }
         [HttpPost]
         [Route("api/submit")]
-        public IActionResult Submit(string code)
+        public IActionResult Submit(ExerciseViewModel model)
         {
-            _basicCompilerService.Compile(code);
-            return View();
+            if (ModelState.IsValid)
+            {
+                string info = _basicCompilerService.Compile(model);
+                return Ok(new { data = info });
+            }
+            return BadRequest("Invalid code");
         }
     }
 }
