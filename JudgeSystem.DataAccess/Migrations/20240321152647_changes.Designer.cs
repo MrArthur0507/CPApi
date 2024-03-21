@@ -3,6 +3,7 @@ using System;
 using JudgeSystem.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JudgeSystem.DataAccess.Migrations
 {
     [DbContext(typeof(JudgeDataContext))]
-    partial class JudgeDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240321152647_changes")]
+    partial class changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
@@ -87,7 +90,7 @@ namespace JudgeSystem.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ProblemId")
+                    b.Property<Guid>("ProblemId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("SubmissionTime")
@@ -345,7 +348,9 @@ namespace JudgeSystem.DataAccess.Migrations
                 {
                     b.HasOne("JudgeSystem.Models.DbModels.Problem", "Problem")
                         .WithMany("Submissions")
-                        .HasForeignKey("ProblemId");
+                        .HasForeignKey("ProblemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("JudgeSystem.Models.User.ApplicationUser", "User")
                         .WithMany()

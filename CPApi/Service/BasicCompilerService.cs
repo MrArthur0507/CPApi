@@ -39,7 +39,7 @@ namespace CPApi.Service
             if (compileProcess.ExitCode == 0)
             {
                 string compiledProgramOutput = RunCompiledProgram(outputPath);
-                compilationResult = $"{Environment.NewLine}Compilation succeeded.{Environment.NewLine}Compiled Program Output:{Environment.NewLine}{compiledProgramOutput}";
+                compilationResult = compiledProgramOutput;
             }
             else
             {
@@ -60,6 +60,7 @@ namespace CPApi.Service
             {
                 FileName = programPath,
                 RedirectStandardOutput = true,
+                Arguments = "5",
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
@@ -67,7 +68,7 @@ namespace CPApi.Service
 
             using (Process process = Process.Start(startInfo))
             {
-                string output = process.StandardOutput.ReadToEnd();
+                string output = process.StandardOutput.ReadToEnd() ;
                 string errors = process.StandardError.ReadToEnd();
                 process.WaitForExit();
 

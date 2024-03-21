@@ -5,11 +5,13 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPApi", "CPApi\CPApi.csproj", "{0DA896A9-2F29-4AD8-AD54-AA8145CADD31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JudgeSystem.Models", "JudgeSystem.Models\JudgeSystem.Models.csproj", "{A2DFB535-5717-4763-9B3A-9BD1FFE9BE0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JudgeSystem.Models", "JudgeSystem.Models\JudgeSystem.Models.csproj", "{A2DFB535-5717-4763-9B3A-9BD1FFE9BE0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JudgeSystem.DataAccess", "JudgeSystem.DataAccess\JudgeSystem.DataAccess.csproj", "{27CCBA8F-4F80-472E-94B6-E0DF68E9A2F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JudgeSystem.DataAccess", "JudgeSystem.DataAccess\JudgeSystem.DataAccess.csproj", "{27CCBA8F-4F80-472E-94B6-E0DF68E9A2F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JudgeSystem.Services", "JudgeSystem.Services\JudgeSystem.Services.csproj", "{74B89AF5-152D-4EF5-927F-87E653F1B151}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JudgeSystem.Services", "JudgeSystem.Services\JudgeSystem.Services.csproj", "{74B89AF5-152D-4EF5-927F-87E653F1B151}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JudgeSystem.Core", "JudgeSystem.Core\JudgeSystem.Core.csproj", "{CEE6DDAB-86C1-4A76-844A-8CD23D63E4C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{74B89AF5-152D-4EF5-927F-87E653F1B151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74B89AF5-152D-4EF5-927F-87E653F1B151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74B89AF5-152D-4EF5-927F-87E653F1B151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEE6DDAB-86C1-4A76-844A-8CD23D63E4C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE6DDAB-86C1-4A76-844A-8CD23D63E4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE6DDAB-86C1-4A76-844A-8CD23D63E4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE6DDAB-86C1-4A76-844A-8CD23D63E4C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
