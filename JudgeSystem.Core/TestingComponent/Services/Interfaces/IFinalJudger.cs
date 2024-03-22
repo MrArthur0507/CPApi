@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace JudgeSystem.Core.TestingComponent.Services.Interfaces
 {
-    public interface ITestService
+    public interface IFinalJudger
     {
-        public TestResultSuite RunTests(TestSuite testSuite, string programPath);
+        public TestResultSuite Judge(string programPath, TestSuite testCases);
     }
 }

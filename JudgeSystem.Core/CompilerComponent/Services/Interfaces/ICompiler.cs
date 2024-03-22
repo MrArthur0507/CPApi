@@ -9,6 +9,6 @@ namespace JudgeSystem.Core.CompilerComponent.Services.Interfaces
 {
     public interface ICompiler
     {
-        public bool Compile(string submissionFilePath);
+        public string Compile(string submissionFilePath);
     }
 }

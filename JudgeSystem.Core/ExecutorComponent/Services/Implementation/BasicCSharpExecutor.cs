@@ -10,36 +10,42 @@ namespace JudgeSystem.Core.ExecutorComponent.Services.Implementation
 {
     public class BasicCSharpExecutor : IExecutor
     {
-        private readonly string _programPath = "C:\\Users\\Bozhidar\\source\\repos\\CPApi\\code\\myprogram.exe";
-
-        
-        public string Execute(string[] arguments)
+        public string Execute(string[] arguments, string programPath)
         {
             try
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo
                 {
-                    FileName = _programPath,
+                    FileName = programPath,
+                    Arguments = string.Join(" ", arguments), 
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                   
                 };
-                string joined = string.Join(" ", arguments);
-                Console.WriteLine(joined);
 
-                Console.WriteLine(startInfo.ArgumentList.Count);
-                using (Process process = Process.Start(startInfo.FileName, joined))
+                using (Process process = new Process())
                 {
-                    string output = process.StandardOutput.ReadToEnd();
-                    string errors = process.StandardError.ReadToEnd();
-                    process.WaitForExit();
+                    process.StartInfo = startInfo;
+                    process.Start(); 
+
+                    
+                    Task<string> outputTask = process.StandardOutput.ReadToEndAsync();
+                    Task<string> errorTask = process.StandardError.ReadToEndAsync();
+
+                    
+                    Task.WaitAll(outputTask, errorTask);
+
+                    string output = outputTask.Result; 
+                    string errors = errorTask.Result; 
+
+                    process.WaitForExit(); 
 
                     if (!string.IsNullOrEmpty(errors))
                     {
                         return $"Runtime Errors:{Environment.NewLine}{errors}";
                     }
+
                     Console.WriteLine(output);
                     return output;
                 }

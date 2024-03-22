@@ -13,22 +13,23 @@ namespace JudgeSystem.Core.CompilerComponent.Services.Implementation
     {
         private readonly string _compilerPath;
         private readonly string _outputDirectory = "C:\\Users\\Bozhidar\\source\\repos\\CPApi\\code";
-        private readonly string outputPath = "C:\\Users\\Bozhidar\\source\\repos\\CPApi\\code\\Code.exe";
+        private readonly string _outputPath = "C:\\Users\\Bozhidar\\source\\repos\\CPApi\\code";
 
-
-
-        public bool Compile(string submissionFilePath)
+        public string Compile(string submissionFilePath)
         {
             try
             {
-                
                 string compilerPath = @"C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe";
+                string uniqueOutputFileName = $"{Guid.NewGuid()}.exe";
+                string outputFilePath = System.IO.Path.Combine(_outputPath, uniqueOutputFileName);
 
-                Console.WriteLine(submissionFilePath);
+                Console.WriteLine($"Output file path: {outputFilePath}");
+                Console.WriteLine($"Submission file path: {submissionFilePath}");
+
                 Process compileProcess = new Process();
                 compileProcess.StartInfo.FileName = compilerPath;
-                compileProcess.StartInfo.Arguments = $"/out:\"{outputPath}\" \"{submissionFilePath}\"";
-                compileProcess.StartInfo.WorkingDirectory = @"C:\Users\Bozhidar\source\repos\CPApi\code";
+                compileProcess.StartInfo.Arguments = $"/out:\"{outputFilePath}\" \"{submissionFilePath}\"";
+                compileProcess.StartInfo.WorkingDirectory = _outputDirectory;
                 compileProcess.StartInfo.UseShellExecute = false;
                 compileProcess.StartInfo.RedirectStandardOutput = true;
                 compileProcess.StartInfo.RedirectStandardError = true;
@@ -41,20 +42,19 @@ namespace JudgeSystem.Core.CompilerComponent.Services.Implementation
                 if (compileProcess.ExitCode == 0)
                 {
                     Console.WriteLine("Compilation successful.");
-                    return true;
+                    return outputFilePath;
                 }
                 else
                 {
                     Console.WriteLine($"Compilation failed with errors: {errors}");
-                    return false;
+                    return null;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error occurred during compilation: {ex.Message}");
-                return false;
+                return null;
             }
         }
-
     }
 }
