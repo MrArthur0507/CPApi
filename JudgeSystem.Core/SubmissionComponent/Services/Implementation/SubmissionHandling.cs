@@ -16,6 +16,7 @@ namespace JudgeSystem.Core.SubmissionComponent.Services.Implementation
         }
         public string HandleSubmission(string code, LanguageType languageType)
         {
+            Console.WriteLine(languageType);
             return _submissionSaver.SaveSubmission(code,languageType.ToString());
         }
     }

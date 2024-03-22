@@ -13,6 +13,9 @@ namespace JudgeSystem.Services.MappingProfiles
     {
         public JudgeMappingProfile() {
             CreateMap<Submission, SubmissionViewModel>().ReverseMap();
+            CreateMap<Problem, ProblemViewModel>().ReverseMap();
+            CreateMap<ProblemDetailViewModel, ProblemDetail>();
+            
         }
     }
 }

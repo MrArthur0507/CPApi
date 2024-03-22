@@ -81,6 +81,8 @@ builder.Services.AddScoped<ICompiler, BasicCSharpCompiler>();
 builder.Services.AddScoped<IExecutor, BasicCSharpExecutor>();
 builder.Services.AddScoped<ISubmissionService, SubmissionService>();
 builder.Services.AddAutoMapper(typeof(JudgeMappingProfile));
+builder.Services.AddScoped<IProblemService, ProblemService>();
+builder.Services.AddScoped<IProblemDetailService, ProblemDetailService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

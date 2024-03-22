@@ -26,7 +26,7 @@ namespace CPApi.Controllers
             {
                 Console.WriteLine(item);
             }
-            string output =  _executor.Execute(args);
+            string output =  _executor.Execute(args, "code");
            if (output != null)
             {
                 return Ok(output);
