@@ -10,5 +10,9 @@ namespace JudgeSystem.Services.Interfaces
     public interface IProblemDetailService
     {
         public bool CreateProblemDetail(ProblemDetailViewModel problemDetailViewModel);
+        public bool UpdateProblemDetail(UpdateProblemDetailViewModel problemDetailViewModel);
+        public ProblemDetailViewModel GetProblemDetailsByProblemIdAndLanguage(Guid problemId, string language);
+
+        public bool DeleteProblemDetail(Guid problemDetailId);
     }
 }
