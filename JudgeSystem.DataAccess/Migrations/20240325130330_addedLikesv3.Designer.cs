@@ -3,6 +3,7 @@ using System;
 using JudgeSystem.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JudgeSystem.DataAccess.Migrations
 {
     [DbContext(typeof(JudgeDataContext))]
-    partial class JudgeDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240325130330_addedLikesv3")]
+    partial class addedLikesv3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");

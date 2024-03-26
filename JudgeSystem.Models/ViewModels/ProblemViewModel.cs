@@ -16,5 +16,7 @@ namespace JudgeSystem.Models.ViewModels
         public string? ImagePath { get; set; }
 
         public string Difficulty { get; set; }
+
+        public int LikesCount { get; set; }
     }
 }

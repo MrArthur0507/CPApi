@@ -3,6 +3,7 @@ using System;
 using JudgeSystem.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JudgeSystem.DataAccess.Migrations
 {
     [DbContext(typeof(JudgeDataContext))]
-    partial class JudgeDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240325123054_addedLikesv2")]
+    partial class addedLikesv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
@@ -23,14 +26,10 @@ namespace JudgeSystem.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("LikedAt")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid>("ProblemId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -364,10 +363,8 @@ namespace JudgeSystem.DataAccess.Migrations
                         .IsRequired();
 
                     b.HasOne("JudgeSystem.Models.User.ApplicationUser", "User")
-                        .WithMany("Likes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Problem");
 
@@ -471,11 +468,6 @@ namespace JudgeSystem.DataAccess.Migrations
                     b.Navigation("Submissions");
 
                     b.Navigation("TestCases");
-                });
-
-            modelBuilder.Entity("JudgeSystem.Models.User.ApplicationUser", b =>
-                {
-                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

@@ -24,5 +24,24 @@ namespace JudgeSystem.DataAccess.Data
         public DbSet<Submission> Submissions { get; set; }
 
         public DbSet<ProblemDetail> ProblemDetails { get; set; }
+
+        public DbSet<Like> Like { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Like>()
+                .HasKey(l => l.Id);
+
+            modelBuilder.Entity<Like>()
+                .HasOne(l => l.User)
+                .WithMany(u => u.Likes)  // Assuming ApplicationUser has a navigation property ICollection<Like> Likes
+                .HasForeignKey(l => l.UserId);
+
+            modelBuilder.Entity<Like>()
+                .HasOne(l => l.Problem)
+                .WithMany(p => p.Likes)  // Assuming Problem has a navigation property ICollection<Like> Likes
+                .HasForeignKey(l => l.ProblemId);
+        }
     }
 }

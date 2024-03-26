@@ -48,9 +48,9 @@ namespace CPApi.Controllers
 
         [HttpGet]
         [Route("getProblemById")]
-        public async Task<ActionResult<ProblemViewModel>> GetById(string id)
+        public async Task<ActionResult<ProblemViewModel>> GetById(string problemId)
         {
-            var problem = _problemService.GetProblemById(id);
+            var problem = _problemService.GetProblemById(problemId);
             if (problem == null)
             {
                 return NotFound();

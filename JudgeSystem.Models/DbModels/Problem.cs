@@ -22,5 +22,7 @@ namespace JudgeSystem.Models.DbModels
 
         public ICollection<TestCase> TestCases { get; set; }
 
+        public ICollection<Like> Likes { get; set; }
+
     }
 }

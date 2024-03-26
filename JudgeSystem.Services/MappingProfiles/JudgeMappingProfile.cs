@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using JudgeSystem.Models.DbModels;
+using JudgeSystem.Models.User;
 using JudgeSystem.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace JudgeSystem.Services.MappingProfiles
             CreateMap<Problem, ProblemViewModel>().ReverseMap();
             CreateMap<ProblemDetailViewModel, ProblemDetail>().ReverseMap();
             CreateMap<UpdateProblemDetailViewModel, ProblemDetail>();
+            CreateMap<ApplicationUser, UserViewModel>();
         }
     }
 }

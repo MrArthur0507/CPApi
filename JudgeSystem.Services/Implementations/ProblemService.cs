@@ -3,6 +3,7 @@ using JudgeSystem.DataAccess.Data;
 using JudgeSystem.Models.DbModels;
 using JudgeSystem.Models.ViewModels;
 using JudgeSystem.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,10 +58,12 @@ namespace JudgeSystem.Services.Implementations
             return true;
         }
 
-        public ProblemViewModel GetProblemById(string id)
+        public ProblemViewModel GetProblemById(string problemId)
         {
-            Problem problem = _context.Problems.Find(id);
-            return _mapper.Map<ProblemViewModel>(problem);
+            Problem problem = _context.Problems.Include(p => p.Likes).FirstOrDefault(p => p.Id == Guid.Parse(problemId));
+            ProblemViewModel problemViewModel = _mapper.Map<ProblemViewModel>(problem);
+            problemViewModel.LikesCount = problem.Likes.Count;
+            return problemViewModel;
         }
 
         public List<ProblemViewModel> GetAllProblems()
